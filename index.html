@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SAVA META — Community Strategy Proposal 2026. Presentation narrative gồm 3 hồi, 8 content slides.">
+  <meta name="color-scheme" content="light dark">
+  <title>SAVA META — Community Strategy Proposal 2026</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2303041c'/%3E%3Cpath d='M16 20h24l8 12-8 12H16l8-12z' fill='%2300aff0'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23ffffff'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --ink: #03041c;
+      --muted: #3a3a50;
+      --dim: #686b82;
+      --canvas: #f6f8ff;
+      --surface: #ffffff;
+      --surface-2: #edf3ff;
+      --line: #dbe2f2;
+      --accent: #0741e1;
+      --accent-ink: #ffffff;
+      --cyan: #00aff0;
+      --violet: #0078d7;
+      --ice: #edecff;
+      --max: 1180px;
+      --radius: 18px;
+      --shadow: 0 24px 60px rgba(0,0,0,.24);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 92% 8%, rgba(0,175,240,.11), transparent 30rem),
+        linear-gradient(180deg, #fff 0%, var(--canvas) 100%);
+      font-family: Roboto, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--cyan);
+      outline-offset: 3px;
+    }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+
+    .progress {
+      position: fixed;
+      z-index: 50;
+      inset: 0 auto auto 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--cyan));
+    }
+
+    .topbar {
+      position: sticky;
+      z-index: 40;
+      top: 0;
+      border-bottom: 1px solid rgba(7,65,225,.11);
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(18px);
+    }
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 32px));
+      min-height: 70px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .brand {
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-family: "Space Grotesk", Roboto, ui-sans-serif, sans-serif;
+      font-weight: 850;
+      letter-spacing: -.02em;
+    }
+    .brand-mark {
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      color: #fff;
+      background: var(--accent);
+      font-size: 13px;
+      font-weight: 950;
+      transform: rotate(-4deg);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-left: auto;
+    }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a, .utility-button {
+      border: 0;
+      border-radius: 999px;
+      padding: 9px 13px;
+      color: var(--muted);
+      background: transparent;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .nav a:hover, .nav a.active, .utility-button:hover {
+      color: var(--accent);
+      background: var(--surface-2);
+    }
+    .utility-button { border: 1px solid var(--line); }
+
+    main { overflow: clip; }
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin-inline: auto; }
+    .hero {
+      width: 100%;
+      min-height: calc(100svh - 70px);
+      display: grid;
+      align-content: center;
+      padding: 84px max(16px, calc((100% - var(--max))/2)) 72px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 78% 28%, rgba(0,175,240,.2), transparent 30%),
+        linear-gradient(135deg, #03041c 0%, #071747 55%, #0741e1 150%);
+    }
+    .eyebrow, .section-label, .slide-no, .mini-label {
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .eyebrow { color: #00aff0; margin: 0 0 24px; opacity: 0; animation: opening .7s ease .1s forwards; }
+    h1 {
+      max-width: 1050px;
+      margin: 0;
+      font-family: "Space Grotesk", Roboto, ui-sans-serif, sans-serif;
+      font-size: clamp(3.6rem, 9vw, 8.8rem);
+      line-height: .91;
+      letter-spacing: -.065em;
+      font-weight: 950;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: opening .9s cubic-bezier(.2,.8,.2,1) .28s forwards;
+    }
+    h1 span { color: #00aff0; }
+    .hero-meta {
+      max-width: 930px;
+      margin-top: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      opacity: 0;
+      animation: opening .7s ease .8s forwards;
+    }
+    .hero-meta p { margin: 0; color: #edecff; font-size: clamp(1rem, 2vw, 1.2rem); }
+    .discover { color: #fff; font-weight: 850; letter-spacing: .12em; text-decoration: none; white-space: nowrap; }
+    .discover:hover { color: #00aff0; }
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(255,255,255,.02);
+    }
+    .stat-strip div { padding: 15px; text-align: center; border-left: 1px solid var(--line); }
+    .stat-strip div:first-child { border-left: 0; }
+    .stat-strip strong { display: block; font-size: 1.35rem; color: var(--accent); }
+    .stat-strip span { display: block; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+
+    .story-map {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-bottom: 104px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--line);
+      box-shadow: var(--shadow);
+    }
+    .story-card { padding: 26px; background: var(--surface); }
+    .story-card:nth-child(2) { background: #12151a; }
+    .story-card:nth-child(3) { background: #151711; }
+    .story-card .section-label { color: var(--accent); }
+    .story-card h2 { margin: 8px 0; font-size: 1.25rem; line-height: 1.2; }
+    .story-card p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+    @keyframes opening { to { opacity: 1; transform: translateY(0); } }
+
+    .act-header { min-height: 46vh; display: grid; align-content: center; padding: 88px 0 50px; border-top: 1px solid var(--line); }
+    .act-kicker { color: var(--accent); margin: 0; font-weight: 850; text-transform: uppercase; letter-spacing: .14em; font-size: 13px; }
+    .act-header h2 { margin: 6px 0 2px; font-family: "Space Grotesk", Roboto, sans-serif; font-size: clamp(2rem, 5vw, 4.6rem); line-height: 1; letter-spacing: -.055em; }
+    .act-header .act-line { margin: 22px 0 0; max-width: 760px; color: var(--ink); font-family: "Space Grotesk", Roboto, sans-serif; font-size: clamp(1.5rem, 3.5vw, 3rem); line-height: 1.15; font-weight: 750; }
+
+    .slide {
+      position: relative;
+      margin: 28px 0 70px;
+      padding: clamp(24px, 5vw, 58px);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: linear-gradient(145deg, rgba(7,65,225,.025), transparent 35%), var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .js .slide {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);
+    }
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      border-radius: 26px 0 0 26px;
+      background: var(--act-color, var(--accent));
+    }
+    .act-2 .slide {
+      --act-color: #00aff0;
+      --ink: #ffffff;
+      --muted: #c5c9df;
+      --dim: #9ea5c3;
+      --canvas: #090b2c;
+      --surface: #03041c;
+      --line: rgba(237,236,255,.18);
+      color: var(--ink);
+      background: linear-gradient(145deg, rgba(0,175,240,.12), transparent 38%), var(--surface);
+    }
+    .act-3 .slide { --act-color: var(--violet); }
+    .js .slide.is-visible { opacity: 1; transform: translateY(0); }
+    .slide-head { max-width: 900px; margin-bottom: 32px; }
+    .slide-no { color: var(--act-color, var(--accent)); }
+    .slide h3 {
+      margin: 8px 0 6px;
+      font-family: "Space Grotesk", Roboto, sans-serif;
+      font-size: clamp(1.9rem, 4.6vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+    }
+    .slide-title { margin: 0; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.35rem); }
+    .key-message {
+      margin: 28px 0;
+      padding: 20px 22px;
+      border-left: 3px solid var(--act-color, var(--accent));
+      background: color-mix(in srgb, var(--act-color, var(--accent)) 7%, transparent);
+      font-size: 1.1rem;
+      font-weight: 750;
+    }
+    .key-message .mini-label { display: block; margin-bottom: 5px; color: var(--act-color, var(--accent)); }
+    .body-copy { max-width: 880px; color: var(--muted); }
+    .body-copy p { margin: 0 0 1em; }
+    .emphasis { color: var(--ink); font-weight: 800; }
+
+    .table-wrap {
+      width: 100%;
+      margin: 28px 0;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--canvas);
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    th, td { padding: 17px 18px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th {
+      color: var(--act-color, var(--accent));
+      background: rgba(255,255,255,.03);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      line-height: 1.35;
+    }
+    td { color: var(--muted); font-size: .94rem; }
+    tr:last-child td { border-bottom: 0; }
+    td strong { color: var(--ink); }
+    td.num { color: var(--ink); font-weight: 850; font-size: 1.05rem; white-space: nowrap; }
+
+    .source-note, .caveat {
+      margin: 18px 0;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    .source-note a { color: var(--ink); text-underline-offset: 3px; }
+    .source-note a:hover { color: var(--act-color, var(--accent)); }
+    .caveat { padding: 15px 17px; border: 1px dashed var(--line); border-radius: 12px; }
+    .caveat strong { color: var(--ink); }
+    blockquote {
+      margin: 30px 0;
+      padding: 28px 30px;
+      border: 0;
+      border-radius: 16px;
+      color: var(--ink);
+      background: linear-gradient(135deg, rgba(7,65,225,.11), rgba(0,175,240,.05));
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      line-height: 1.4;
+      font-weight: 750;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 24px 0 30px;
+    }
+    .metric { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--canvas); }
+    .metric strong { display: block; color: var(--act-color, var(--accent)); font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1; letter-spacing: -.04em; }
+    .metric span { display: block; margin-top: 10px; color: var(--muted); font-size: .87rem; line-height: 1.4; }
+
+    .before-now { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+    .before-now div { padding: 22px; border-radius: 14px; background: var(--canvas); border: 1px solid var(--line); }
+    .before-now span { display: block; color: var(--muted); font-size: 12px; font-weight: 850; letter-spacing: .12em; }
+    .before-now strong { display: block; margin-top: 5px; font-size: 1.1rem; }
+
+    .reveal {
+      margin: -12px 0 38px;
+      padding: clamp(28px, 7vw, 76px);
+      border-radius: 20px;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(135deg, #03041c, #0741e1);
+    }
+    .reveal h3 { margin: 0; color: #fff; font-family: "Space Grotesk", Roboto, sans-serif; font-size: clamp(4rem, 11vw, 9rem); line-height: .84; }
+    .reveal p { margin: 18px 0 0; font-size: clamp(1.2rem, 3vw, 2.1rem); font-weight: 950; letter-spacing: .09em; }
+    .proposition {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 26px 0;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .proposition div { padding: 22px; border-left: 1px solid var(--line); font-weight: 850; font-size: 1.08rem; }
+    .proposition div:first-child { border-left: 0; }
+    .journey {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin: 28px 0;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+    .journey strong { min-width: max-content; padding: 12px 16px; border-radius: 999px; color: #fff; background: var(--act-color, var(--accent)); }
+    .journey span { color: var(--muted); font-size: 1.25rem; }
+
+    .summary { padding: 90px 0 100px; }
+    .summary h2 { margin: 0 0 10px; font-size: clamp(2.5rem, 6vw, 5rem); letter-spacing: -.06em; line-height: 1; }
+    .summary-lead { max-width: 740px; margin: 0 0 34px; color: var(--muted); font-size: 1.1rem; }
+    .story-close {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .story-close article { padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+    .story-close h3 { margin: 0 0 8px; color: var(--accent); font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; }
+    .story-close p { margin: 0; color: var(--muted); }
+    .final-note { margin-top: 30px; padding: 20px 22px; border-radius: 14px; color: #fff; background: var(--accent); font-weight: 800; }
+
+    footer { padding: 32px 0 50px; border-top: 1px solid var(--line); color: var(--dim); font-size: .86rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 20px; }
+    .back-top { color: var(--muted); text-decoration: none; }
+    .back-top:hover { color: var(--accent); }
+
+    @media (max-width: 900px) {
+      .hero { min-height: calc(100svh - 70px); padding-top: 72px; }
+      .hero-meta { align-items: flex-start; flex-direction: column; }
+      .story-close { grid-template-columns: 1fr; }
+      .metric-grid { grid-template-columns: repeat(2, 1fr); }
+      .proposition { grid-template-columns: 1fr; }
+      .proposition div { border-left: 0; border-top: 1px solid var(--line); }
+      .proposition div:first-child { border-top: 0; }
+      .topbar-inner { gap: 12px; }
+      .brand span:last-child { display: none; }
+    }
+
+    @media (max-width: 620px) {
+      .wrap, .topbar-inner { width: min(100% - 22px, var(--max)); }
+      .topbar-inner { min-height: 62px; }
+      .utility-button { display: none; }
+      .nav a { padding: 8px 10px; font-size: 13px; }
+      h1 { font-size: clamp(3.25rem, 18vw, 5rem); }
+      .hero { padding: 56px 18px 54px; }
+      .hero-meta { margin-top: 28px; gap: 22px; }
+      .stat-strip div { padding: 12px 6px; }
+      .stat-strip strong { font-size: 1.08rem; }
+      .act-header { padding-top: 58px; }
+      .slide { margin-bottom: 44px; padding: 24px 18px 28px 22px; border-radius: 18px; }
+      .slide::before { border-radius: 18px 0 0 18px; }
+      .slide h3 { font-size: 2.35rem; }
+      .metric-grid, .before-now { grid-template-columns: 1fr; }
+      blockquote { padding: 22px; }
+      .reveal { padding: 42px 16px; }
+      .reveal h3 { font-size: clamp(3.8rem, 22vw, 6.5rem); }
+      footer .wrap { flex-direction: column; }
+      .table-wrap { overflow: visible; border: 0; background: transparent; }
+      table, tbody, tr, td { display: block; width: 100%; min-width: 0; }
+      thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+      tr { margin-bottom: 12px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--canvas); }
+      td { display: grid; grid-template-columns: minmax(112px, 38%) 1fr; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+      td:last-child { border-bottom: 0; }
+      td::before { content: attr(data-label); color: var(--act-color, var(--accent)); font-size: 11px; font-weight: 850; line-height: 1.4; text-transform: uppercase; letter-spacing: .07em; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .slide, .eyebrow, h1, .hero-meta { opacity: 1; transform: none; }
+    }
+
+    @media print {
+      :root { --ink: #111; --muted: #444; --dim: #666; --canvas: #fff; --surface: #fff; --surface-2: #f5f5f5; --line: #ccc; }
+      body { background: #fff; color: #111; }
+      .topbar, .progress { display: none; }
+      .hero { min-height: auto; padding: 36px 0; }
+      h1, .reveal h3 { color: #111; }
+      .slide { break-before: page; break-inside: avoid; box-shadow: none; opacity: 1; transform: none; }
+      .table-wrap { overflow: visible; }
+      table { min-width: 0; }
+      a { text-decoration: none; }
+      .reveal { border: 2px solid #111; background: #fff; color: #111; }
+      .reveal p, .final-note { color: #111; }
+      .final-note { border: 1px solid #111; background: #fff; }
+    }
+  </style>
+</head>
+<body id="top">
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="Về đầu trang">
+        <span class="brand-mark">S</span>
+        <span>SAVA META</span>
+      </a>
+      <nav class="nav" aria-label="Điều hướng tài liệu">
+        <a href="#act-1">Act I</a>
+        <a href="#act-2">Act II</a>
+        <a href="#act-3">Act III</a>
+      </nav>
+      <button class="utility-button" type="button" onclick="window.print()" aria-label="In hoặc lưu tài liệu thành PDF">In / PDF</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <p class="eyebrow">SAVA META PRESENTS</p>
+      <h1 id="title"><span>AI làm được.</span><br>Nhưng có đáng không?</h1>
+      <div class="hero-meta">
+        <p>Community Strategy Proposal · 2026</p>
+        <a class="discover" href="#act-1">KHÁM PHÁ ↓</a>
+      </div>
+    </section>
+
+    <section class="act act-1 wrap" id="act-1" aria-labelledby="act-1-title">
+      <header class="act-header">
+        <p class="act-kicker">Act I</p>
+        <h2 id="act-1-title">The New Reality</h2>
+        <p class="act-line">“Cuộc chơi đã đổi luật.”</p>
+      </header>
+
+      <article class="slide" id="slide-01">
+        <header class="slide-head">
+          <span class="slide-no">Act I · Slide 01</span>
+          <h3>WHY NOW?</h3>
+        </header>
+        <div class="key-message"><span class="mini-label">Key Message</span>AI khiến việc bắt đầu dễ dàng hơn bao giờ hết.</div>
+        <div class="table-wrap" role="region" aria-label="Tín hiệu thị trường" tabindex="0">
+          <table>
+            <thead><tr><th>Market Signal</th><th>Dữ liệu</th><th>Ý nghĩa</th></tr></thead>
+            <tbody>
+              <tr><td><strong>AI × Game Creation</strong></td><td><strong>07/10/2026:</strong> Google giới thiệu Playground, cho phép tạo, chơi và chia sẻ Game bằng câu lệnh tự nhiên, không cần biết lập trình.</td><td>Công nghệ đang làm giảm rào cản từ ý tưởng đến sản phẩm đầu tiên.</td></tr>
+              <tr><td><strong>Digital Accessibility</strong></td><td>Việt Nam có <strong>85,6 triệu người sử dụng Internet</strong>, tương đương <strong>84,2% dân số</strong> vào cuối năm 2025.</td><td>Môi trường số đã trở thành một phần phổ biến của đời sống.</td></tr>
+              <tr><td><strong>Social Media Scale</strong></td><td>Khoảng <strong>79 triệu danh tính người dùng Social Media</strong> tại Việt Nam vào tháng 10/2025.</td><td>Social vẫn là môi trường có khả năng tiếp cận người dùng trên quy mô lớn.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note"><strong>Nguồn:</strong> <a href="https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform/" target="_blank" rel="noopener">Google Playground, 07/10/2026</a>; <a href="https://datareportal.com/reports/digital-2026-vietnam" target="_blank" rel="noopener">DataReportal — Digital 2026 Vietnam</a>.</p>
+        <p class="caveat"><strong>Lưu ý:</strong> Social Media User Identities không đồng nghĩa 79 triệu cá nhân duy nhất. Playground ban đầu giới hạn tại Mỹ cho người dùng từ 18 tuổi trở lên.</p>
+        <div class="body-copy">
+          <p>Trước đây, muốn tạo ra một Game, Website hay sản phẩm công nghệ, người dùng thường cần kiến thức và kỹ năng nhất định.</p>
+          <p class="emphasis">Công nghệ đang làm giảm rào cản từ ý tưởng đến sản phẩm đầu tiên.</p>
+        </div>
+      </article>
+
+      <article class="slide" id="slide-02">
+        <header class="slide-head">
+          <span class="slide-no">Act I · Slide 02</span>
+          <h3>WHO ARE WE TALKING TO?</h3>
+        </header>
+        <div class="key-message"><span class="mini-label">Key Message</span>Một thế hệ thích khám phá, không nhất thiết muốn trở thành Developer.</div>
+        <h4>Audience Definition</h4>
+        <div class="table-wrap" role="region" aria-label="Định nghĩa đối tượng" tabindex="0">
+          <table>
+            <thead><tr><th>Target Audience</th><th>Chân dung</th><th>Động lực chính</th><th>Consumer Question</th></tr></thead>
+            <tbody>
+              <tr><td><strong>PRIMARY — CURIOUS EXPLORERS</strong></td><td>Người trẻ <strong>18–28 tuổi</strong>, yêu Game, thích AI, công nghệ và trải nghiệm số mới.</td><td>Khám phá, giải trí, tìm những thứ thú vị hoặc hữu ích.</td><td><strong>“Có gì hay, đáng thử không?”</strong></td></tr>
+              <tr><td><strong>SECONDARY — EMERGING BUILDERS</strong></td><td>Sinh viên, Junior và người mới dùng AI để làm Content, Design, Website, Game, App hoặc dự án cá nhân.</td><td>Ứng dụng công nghệ và cải thiện kết quả.</td><td><strong>“Làm sao để tôi làm tốt hơn?”</strong></td></tr>
+              <tr><td><strong>CONTRIBUTORS — PRACTITIONERS</strong></td><td>Người làm nghề về AI, Game, Product, Development và Creative.</td><td>—</td><td><strong>“Điều gì thực sự tạo ra chất lượng?”</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>Audience Evidence</h4>
+        <div class="metric-grid">
+          <div class="metric"><strong>66%</strong><span>chọn giải trí là một lý do chơi Game.</span></div>
+          <div class="metric"><strong>58%</strong><span>chọn thư giãn, giảm căng thẳng.</span></div>
+          <div class="metric"><strong>24.216</strong><span>người chơi tại 21 quốc gia trong Global Power of Play 2025.</span></div>
+          <div class="metric"><strong>418</strong><span>sinh viên Việt Nam trong nghiên cứu AI năm 2026.</span></div>
+        </div>
+        <p class="source-note"><strong>Nguồn:</strong> <a href="https://www.theesa.com/resources/the-global-power-of-play-report/" target="_blank" rel="noopener">Global Power of Play 2025</a> (khảo sát 24.216 người tại 21 quốc gia, không bao gồm Việt Nam). Nghiên cứu năm 2026 với 418 sinh viên đại học Việt Nam ghi nhận kỳ vọng về hiệu quả và sự thích thú khi dùng AI đều có liên hệ có ý nghĩa thống kê với ý định sử dụng AI.</p>
+        <div class="key-message"><span class="mini-label">Kết luận</span><strong>Đủ vui để người trẻ muốn khám phá. Đủ chất lượng để người muốn phát triển năng lực tiếp tục quan tâm.</strong></div>
+        <p class="caveat"><strong>Lưu ý:</strong> Độ tuổi 18–28 là lựa chọn TA của SAVA, không phải kết luận suy ra từ hai khảo sát trên.</p>
+      </article>
+
+      <article class="slide" id="slide-03">
+        <header class="slide-head">
+          <span class="slide-no">Act I · Slide 03</span>
+          <h3>THE COMMUNITY LANDSCAPE</h3>
+        </header>
+        <div class="key-message"><span class="mini-label">Key Message</span>Có nhiều nơi để theo dõi công nghệ. Nhưng tại sao người dùng cần thêm một Community?</div>
+        <div class="table-wrap" role="region" aria-label="So sánh cộng đồng" tabindex="0">
+          <table>
+            <thead><tr><th>Community Benchmark</th><th>Dữ liệu / Quan sát</th><th>Bài học cho SAVA</th></tr></thead>
+            <tbody>
+              <tr><td><strong>J2TEAM Community — Việt Nam</strong></td><td>Website chính thức công bố hơn <strong>697.000 thành viên</strong>. Group cho phép nội dung công nghệ, AI, review, giải trí và tuyển dụng.</td><td>Community công nghệ có thể phục vụ nhiều nhu cầu, nhưng cần văn hóa và quy tắc nội dung rõ ràng.</td></tr>
+              <tr><td><strong>Facebook Group giáo viên — quốc tế</strong></td><td>Nghiên cứu một Group gần <strong>20.000 giáo viên</strong> trong <strong>8 năm</strong> cho thấy cộng đồng lớn không tự động tạo ra sự trao đổi chuyên môn sâu.</td><td>Đông thành viên không đồng nghĩa hình thành một cộng đồng học hỏi hiệu quả.</td></tr>
+              <tr><td><strong>Stack Overflow Developer Survey 2026</strong></td><td><strong>64,1%</strong> người trả lời truy cập Stack Overflow ít hơn cho các câu hỏi đơn giản vì AI; <strong>15,9%</strong> truy cập nhiều hơn để kiểm chứng.</td><td>Vai trò cộng đồng chuyên môn có thể dịch chuyển từ cung cấp câu trả lời sang kiểm chứng và giải quyết vấn đề phức tạp hơn.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note"><strong>Nguồn:</strong> <a href="https://j2team.dev/" target="_blank" rel="noopener">J2TEAM</a>; <a href="https://rules.j2team.org/" target="_blank" rel="noopener">J2TEAM Community Rules</a>; <a href="https://www.sciencedirect.com/science/article/pii/S0360131521001469" target="_blank" rel="noopener">Teacher Community Research</a>; <a href="https://survey.stackoverflow.co/2026/community/data" target="_blank" rel="noopener">Stack Overflow Community 2026</a>.</p>
+        <div class="body-copy">
+          <h4>The Opportunity</h4>
+          <p>Người dùng đã có nơi để xem tin, tìm công cụ, lưu hướng dẫn hoặc hỏi AI.</p>
+          <p>Vì vậy, SAVA không cần tạo ra một Community chỉ để cung cấp thêm những nội dung tương tự.</p>
+        </div>
+        <blockquote>Giữa vô số công cụ và cộng đồng đang tồn tại, điều gì khiến một người trẻ thấy đáng dành thời gian để tham gia, tin tưởng và quay lại?</blockquote>
+        <p class="caveat"><strong>Khoảng trống nghiên cứu:</strong> Chúng ta chưa có dữ liệu đủ để kết luận các Group lớn tại Việt Nam đang có Engagement thấp vì thiếu chuyên môn. Không nên trình bày điều này thành sự thật.</p>
+      </article>
+    </section>
+
+    <section class="act act-2 wrap" id="act-2" aria-labelledby="act-2-title">
+      <header class="act-header">
+        <p class="act-kicker">Act II</p>
+        <h2 id="act-2-title">The Human Problem</h2>
+        <p class="act-line">“Một lời hứa không phải bằng chứng.”</p>
+      </header>
+
+      <article class="slide" id="slide-04">
+        <header class="slide-head">
+          <span class="slide-no">Act II · Slide 04</span>
+          <h3>THE PARADOX</h3>
+        </header>
+        <div class="key-message"><span class="mini-label">Key Message</span>CÔNG NGHỆ CÀNG DỄ DÙNG, CHẤT LƯỢNG CÀNG KHÓ PHÂN BIỆT.</div>
+        <div class="table-wrap" role="region" aria-label="Nghiên cứu về hiệu quả AI" tabindex="0">
+          <table>
+            <thead><tr><th>Research</th><th>Data</th><th>Strategic Implication</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Harvard Business School × BCG</strong></td><td>Thử nghiệm với <strong>758 chuyên viên</strong>: AI giúp hoàn thành tác vụ phù hợp nhanh hơn <strong>25,1%</strong>, nhưng ở một tác vụ vượt ngoài khả năng AI, người dùng AI có xác suất đưa ra lời giải đúng thấp hơn <strong>19 điểm phần trăm</strong>.</td><td><strong>Có công cụ tốt chưa đủ. Phải biết khi nào và sử dụng như thế nào.</strong></td></tr>
+              <tr><td><strong>Stack Overflow 2026</strong></td><td><strong>48%</strong> người trả lời tin kết quả AI khi có thể dễ dàng kiểm chứng.</td><td>Khả năng đánh giá và kiểm chứng là một phần quan trọng của việc sử dụng AI.</td></tr>
+              <tr><td><strong>Science Advances 2024</strong></td><td>Thử nghiệm với <strong>293 người viết</strong>: AI giúp cải thiện chất lượng sáng tác cá nhân nhưng khiến các tác phẩm trở nên tương đồng hơn.</td><td><strong>Tạo ra kết quả tốt hơn không đồng nghĩa tạo ra sự khác biệt.</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note"><strong>Nguồn:</strong> <a href="https://doi.org/10.1287/orsc.2025.21838" target="_blank" rel="noopener">Harvard × BCG</a>; <a href="https://survey.stackoverflow.co/2026/ai/data/ai-trust" target="_blank" rel="noopener">Stack Overflow 2026</a>; <a href="https://doi.org/10.1126/sciadv.adn5290" target="_blank" rel="noopener">Science Advances 2024</a>.</p>
+        <p class="caveat"><strong>Lưu ý:</strong> Các kết quả phản ánh từng tác vụ, nhóm khảo sát cụ thể; không có nghĩa AI luôn làm giảm chất lượng.</p>
+        <h4>The Tension</h4>
+        <div class="before-now">
+          <div><span>Before</span><strong>Không biết làm thế nào.</strong></div>
+          <div><span>Now</span><strong>Làm được rồi, nhưng có chắc đúng? Có đủ tốt? Có thực sự hữu ích?</strong></div>
+        </div>
+        <blockquote>AI đang giải quyết rào cản bắt đầu, nhưng chưa tự động giải quyết được bài toán chất lượng.</blockquote>
+      </article>
+
+      <article class="slide" id="slide-05">
+        <header class="slide-head">
+          <span class="slide-no">Act II · Slide 05</span>
+          <h3>THE HUMAN INSIGHT</h3>
+        </header>
+        <div class="key-message"><span class="mini-label">Key Message</span>Có nhiều công cụ và nguồn thông tin không đồng nghĩa người dùng dễ tìm được giải pháp phù hợp.</div>
+        <h4>Data — Vì sao người dùng không tham gia nhiều hơn?</h4>
+        <p class="body-copy">Khảo sát <strong>15.602 người trả lời</strong> của Stack Overflow 2026 về rào cản tham gia cộng đồng chuyên môn:</p>
+        <div class="table-wrap" role="region" aria-label="Rào cản tham gia cộng đồng" tabindex="0">
+          <table>
+            <thead><tr><th>Rào cản</th><th>Tỷ lệ</th></tr></thead>
+            <tbody>
+              <tr><td>Thường tìm được câu trả lời mà không cần đăng bài</td><td class="num">65,1%</td></tr>
+              <tr><td>AI đã trả lời đủ những câu hỏi của họ</td><td class="num">44,7%</td></tr>
+              <tr><td>Không có thời gian tham gia nhiều hơn</td><td class="num">35,8%</td></tr>
+              <tr><td>Lo bị đánh giá hoặc chỉ trích</td><td class="num">21,1%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">Đây là câu hỏi chọn nhiều đáp án. Nguồn: <a href="https://survey.stackoverflow.co/2026/community/data" target="_blank" rel="noopener">Stack Overflow Developer Survey 2026</a>.</p>
+        <div class="key-message"><span class="mini-label">Hàm ý</span>Một Community chỉ cung cấp thông tin hoặc câu trả lời cơ bản sẽ phải cạnh tranh trực tiếp với AI và công cụ tìm kiếm.</div>
+        <h4>Truth → Tension → Insight</h4>
+        <div class="table-wrap" role="region" aria-label="Truth Tension Insight" tabindex="0">
+          <table>
+            <thead><tr><th>Problem</th><th>Truth</th><th>Tension</th><th>Consumer Insight</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Credibility Gap</strong></td><td>Ai cũng có thể chia sẻ công cụ, Prompt và bí quyết AI.</td><td>Tôi không biết đâu là thứ thực sự đáng tin, đáng thử.</td><td><strong>“Tôi không thiếu thứ để khám phá. Tôi thiếu lý do để biết thứ nào đáng tin.”</strong></td></tr>
+              <tr><td><strong>Application Gap</strong></td><td>Kiến thức và hướng dẫn dễ tiếp cận.</td><td>Tôi có thể lưu nhiều thứ nhưng không có thời gian hoặc điều kiện thử hết.</td><td><strong>“Tôi cần biết điều gì thực sự dùng được trong hoàn cảnh của mình.”</strong></td></tr>
+              <tr><td><strong>Mastery Gap</strong></td><td>AI giúp tạo kết quả ban đầu nhanh hơn.</td><td>Tôi làm được nhưng không chắc sản phẩm đủ tốt hoặc khác biệt.</td><td><strong>“Tôi muốn hiểu điều gì khiến thứ mình làm trở nên tốt hơn.”</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="caveat"><strong>Lưu ý:</strong> Các insight là giả thuyết chiến lược tổng hợp từ dữ liệu và nghiên cứu, chưa phải phát biểu nguyên văn của người tham gia khảo sát.</p>
+        <blockquote><span class="mini-label">Core Consumer Insight</span>“Tôi không thiếu công cụ để bắt đầu. Tôi cần biết thứ gì thực sự hiệu quả và làm thế nào để tạo ra kết quả tốt hơn.”</blockquote>
+      </article>
+
+      <article class="slide" id="slide-06">
+        <header class="slide-head">
+          <span class="slide-no">Act II · Slide 06</span>
+          <h3>THE ROLE OF SAVA META</h3>
+        </header>
+        <div class="body-copy">
+          <h4>Brand Worldview</h4>
+          <div class="key-message">The easier technology makes it to build anything, the more important it becomes to know what is worth building.</div>
+          <h4>Brand Master Principle</h4>
+          <div class="key-message">BÀI TOÁN TRƯỚC. CÔNG NGHỆ SAU. GIÁ TRỊ THỰC TẾ LÀ ĐÍCH ĐẾN.</div>
+        </div>
+        <div class="table-wrap" role="region" aria-label="Lợi thế SAVA" tabindex="0">
+          <table>
+            <thead><tr><th>Lợi thế SAVA</th><th>Vấn đề người dùng</th><th>Vai trò có thể tạo ra</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Game &amp; Player Experience</strong></td><td>Một Game được tạo nhanh có chắc hấp dẫn?</td><td>Giải thích điều gì tạo nên trải nghiệm chơi tốt.</td></tr>
+              <tr><td><strong>AI &amp; Technology</strong></td><td>Công cụ có thực sự giải quyết được vấn đề?</td><td>Chia sẻ cách thử nghiệm, đánh giá hiệu quả và giới hạn.</td></tr>
+              <tr><td><strong>Product &amp; Development</strong></td><td>Làm được sản phẩm nhưng chưa biết cách cải thiện?</td><td>Đưa ra góc nhìn từ kinh nghiệm phát triển sản phẩm thực tế.</td></tr>
+              <tr><td><strong>People &amp; Culture</strong></td><td>Người trẻ muốn hiểu nghề nghiệp và môi trường làm việc.</td><td>Cho thấy con người, kinh nghiệm và cách làm nghề của SAVA.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="body-copy">
+          <h4>The Brand Opportunity</h4>
+          <p>SAVA không cần trở thành nơi có nhiều thông tin công nghệ nhất.</p>
+          <p class="emphasis">SAVA có cơ hội trở thành nơi giúp người trẻ hiểu điều gì thực sự đáng thử, đáng tin và đáng làm tốt hơn.</p>
+        </div>
+        <blockquote><span class="mini-label">Kết hồi 2 · The Turning Point</span>Khi ai cũng có thể nói về công nghệ, chúng ta có cần thêm một nơi chia sẻ những lời hứa?<br><br>Hay một nơi giúp những người trẻ tự khám phá điều gì thực sự đáng tin?</blockquote>
+      </article>
+    </section>
+
+    <section class="act act-3 wrap" id="act-3" aria-labelledby="act-3-title">
+      <header class="act-header">
+        <p class="act-kicker">Act III</p>
+        <h2 id="act-3-title">The Answer</h2>
+        <p class="act-line">“Đến lúc bóc tách cho rõ.”</p>
+      </header>
+
+      <article class="slide" id="slide-07">
+        <header class="slide-head">
+          <span class="slide-no">Act III · Slide 07</span>
+        </header>
+        <div class="reveal">
+          <h3>BÓC TECH</h3>
+          <p>DỄ CHƠI, KHÓ GIỎI.</p>
+        </div>
+        <div class="key-message"><span class="mini-label">Community Definition</span>BÓC TECH là cộng đồng dành cho người trẻ yêu Game, tò mò về AI và công nghệ; nơi mọi người cùng khám phá, thử nghiệm, kiểm chứng và trao đổi về những điều công nghệ mang lại dưới góc nhìn thực tế.</div>
+        <h4>Community Proposition</h4>
+        <div class="proposition">
+          <div>Có thứ hay để thử.</div>
+          <div>Có người giỏi để hỏi.</div>
+          <div>Có kết quả thật để tin.</div>
+        </div>
+        <div class="body-copy">
+          <h4>Narrative</h4>
+          <p>Ngày nào Internet cũng xuất hiện thêm một AI Tool mới, một bí quyết mới, một lời hứa giúp chúng ta làm được mọi thứ dễ dàng hơn.</p>
+          <p>Nhưng một Prompt được hàng nghìn người Save có chắc hữu ích? Một Game tạo bằng AI có chắc chơi vui? Một Website đẹp mắt có chắc sử dụng tốt?</p>
+          <p class="emphasis">Làm được là một chuyện. Làm tốt là chuyện khác.</p>
+          <p>BÓC TECH ra đời từ sự tò mò đó.</p>
+          <p>Một nơi người trẻ có thể cùng khám phá công nghệ, thử những điều thú vị và trao đổi với những người thực sự làm nghề.</p>
+          <p>Không cần giỏi mới được tham gia.</p>
+          <p class="emphasis">BÓC TECH — DỄ CHƠI, KHÓ GIỎI.</p>
+        </div>
+        <h4>Ví dụ Community Experience</h4>
+        <div class="table-wrap" role="region" aria-label="Ví dụ trải nghiệm cộng đồng" tabindex="0">
+          <table>
+            <thead><tr><th>Territory</th><th>Ví dụ nội dung</th><th>Điều khiến BÓC TECH khác biệt</th></tr></thead>
+            <tbody>
+              <tr><td><strong>BÓC TECH — Kiểm chứng</strong></td><td><strong>“Một Prompt Claude thay thế được cả ngày làm việc? Bọn mình thử xem.”</strong></td><td>Công khai bài toán, cách thử, kết quả và giới hạn.</td></tr>
+              <tr><td><strong>DỄ CHƠI, KHÓ GIỎI — Chuyên môn</strong></td><td><strong>“AI làm Game trong vài phút. Nhưng tại sao chơi được 30 giây đã muốn thoát?”</strong></td><td>Người làm Game phân tích Gameplay, Player Experience và khả năng cải thiện.</td></tr>
+              <tr><td><strong>HỎI NGƯỜI ĐÃ LÀM — Nghề nghiệp</strong></td><td><strong>“Portfolio có 5 sản phẩm AI tạo ra. Game Studio sẽ đánh giá điều gì?”</strong></td><td>Người làm nghề chia sẻ tiêu chí đánh giá năng lực và sản phẩm.</td></tr>
+              <tr><td><strong>CÓ GÌ HAY? — Giải trí</strong></td><td><strong>“Bảo AI thiết kế căn phòng mơ ước. Nó cho tôi cái giường nằm cạnh bồn cầu.”</strong></td><td>Nội dung vui vẻ, gần gũi, dễ khiến người trẻ chia sẻ trải nghiệm tương tự.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="caveat"><strong>Lưu ý:</strong> Đây là các ví dụ minh họa đã có trong Proposal. Không được trình bày như những Campaign hoặc thử nghiệm SAVA đã thực hiện.</p>
+        <div class="key-message"><span class="mini-label">Điểm khác biệt của BÓC TECH</span>Có thể bắt đầu bằng một câu chuyện vui, nhưng khi cần đào sâu, Community có kinh nghiệm thực tế để tạo thêm giá trị.</div>
+      </article>
+
+      <article class="slide" id="slide-08">
+        <header class="slide-head">
+          <span class="slide-no">Act III · Slide 08</span>
+          <h3>FROM ATTENTION TO COMMUNITY VALUE</h3>
+        </header>
+        <div class="key-message"><span class="mini-label">Key Message</span>AIDA — Một ý tưởng có thể tạo ra nhiều điểm chạm và hành động.</div>
+        <h4>AIDA Journey &amp; Marketing Touchpoints</h4>
+        <p class="body-copy">Tình huống minh họa: <strong>“AI làm Website trong 5 phút. Có dùng được thật không?”</strong></p>
+        <div class="table-wrap" role="region" aria-label="Hành trình AIDA" tabindex="0">
+          <table>
+            <thead><tr><th>AIDA</th><th>Consumer Mindset</th><th>Điểm chạm</th><th>Ví dụ hoạt động</th><th>KPI</th></tr></thead>
+            <tbody>
+              <tr><td><strong>ATTENTION</strong></td><td>“Ủa, AI làm nhanh vậy?”</td><td>TikTok, Facebook Reels, Creator/Community Partnership</td><td>Video thử tạo Website bằng AI trong 5 phút; hé lộ những lỗi bất ngờ.</td><td>Reach, Views, Engagement</td></tr>
+              <tr><td><strong>INTEREST</strong></td><td>“Đẹp đấy, nhưng dùng ổn không?”</td><td>Facebook Fanpage, Carousel, Video Review</td><td><strong>BÓC TECH:</strong> Kiểm tra khả năng sử dụng trên Mobile, trải nghiệm người dùng và những lỗi thường gặp.</td><td>Engaged Views, Clicks</td></tr>
+              <tr><td><strong>DESIRE</strong></td><td>“Mình cũng gặp vấn đề này. Có ai giải thích không?”</td><td>Expert POV, Group Preview, Community Conversation</td><td>Developer/Designer của SAVA giải thích lỗi và cho thấy một trường hợp được góp ý, cải thiện.</td><td>Group Visits, Join Conversion</td></tr>
+              <tr><td><strong>ACTION</strong></td><td>“Để mình gửi Website vừa làm vào xem sao.”</td><td>Facebook Group</td><td>Thành viên chia sẻ bản thử, đặt câu hỏi hoặc tham gia góp ý.</td><td>Approved Joins, Active Members, UGC</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>Những điểm chạm khác có thể phát sinh</h4>
+        <div class="table-wrap" role="region" aria-label="Điểm chạm mở rộng" tabindex="0">
+          <table>
+            <thead><tr><th>Chủ đề</th><th>Attention</th><th>Interest / Desire</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Game</strong></td><td>“AI tạo Game không cần Code?”</td><td>Game Designer phân tích trải nghiệm.</td><td>Thành viên chơi thử, chia sẻ cảm nhận.</td></tr>
+              <tr><td><strong>AI trong đời sống</strong></td><td>“AI giúp quản lý chi tiêu?”</td><td>So sánh hiệu quả và giới hạn.</td><td>Thành viên chia sẻ kết quả thử.</td></tr>
+              <tr><td><strong>Career &amp; Culture</strong></td><td>“Game Designer có phải chơi Game cả ngày?”</td><td>Người làm nghề SAVA chia sẻ thực tế.</td><td>Thành viên trao đổi về nghề và cơ hội.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>Sau AIDA — Community Engagement Loop</h4>
+        <div class="journey" aria-label="Experience dẫn đến Trust, Return và Contribution">
+          <strong>Experience</strong><span>→</span><strong>Trust</strong><span>→</span><strong>Return</strong><span>→</span><strong>Contribution</strong>
+        </div>
+        <p class="body-copy">Người dùng có trải nghiệm thú vị → nhận được góc nhìn hoặc lời giải có giá trị → có lý do quay lại → từng bước chủ động đóng góp.</p>
+        <h4>Business Contribution</h4>
+        <div class="table-wrap" role="region" aria-label="Đóng góp cho thương hiệu và kinh doanh" tabindex="0">
+          <table>
+            <thead><tr><th>Brand / Business Objective</th><th>Giá trị từ Community</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Brand Awareness &amp; Trust</strong></td><td>Người trẻ biết đến SAVA và dần nhận ra năng lực chuyên môn qua trải nghiệm.</td></tr>
+              <tr><td><strong>Game &amp; AI Audience</strong></td><td>Phát triển sự quan tâm dài hạn đến Game, AI và ứng dụng công nghệ.</td></tr>
+              <tr><td><strong>Future Builder Development</strong></td><td>Khơi gợi tư duy sáng tạo, chất lượng sản phẩm và khả năng ứng dụng thực tế.</td></tr>
+              <tr><td><strong>Employer Branding &amp; Talent Attraction</strong></td><td>Cho thấy văn hóa làm nghề, con người và cơ hội phát triển tại SAVA.</td></tr>
+              <tr><td><strong>Market &amp; Product Insights</strong></td><td>Ghi nhận câu hỏi, nhu cầu và những vấn đề người dùng tự nguyện chia sẻ.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="key-message"><span class="mini-label">Measurement</span>Community Growth · Member Activation · Retention · Contribution · Trust &amp; Resolution.</div>
+      </article>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>SAVA META · Community Proposal · BÓC TECH</span>
+      <a class="back-top" href="#top">Về đầu trang ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      const progress = document.getElementById('progress');
+      const links = [...document.querySelectorAll('.nav a')];
+      const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+
+      document.querySelectorAll('table').forEach(table => {
+        const labels = [...table.querySelectorAll('thead th')].map(cell => cell.textContent.trim());
+        table.querySelectorAll('tbody tr').forEach(row => {
+          [...row.children].forEach((cell, index) => cell.dataset.label = labels[index] || 'Thông tin');
+        });
+      });
+
+      const slides = [...document.querySelectorAll('.slide')];
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08 });
+        slides.forEach(slide => revealObserver.observe(slide));
+      } else {
+        slides.forEach(slide => slide.classList.add('is-visible'));
+      }
+
+      function update() {
+        const max = document.documentElement.scrollHeight - innerHeight;
+        progress.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
+        let current = sections[0];
+        for (const section of sections) {
+          if (section.getBoundingClientRect().top <= 130) current = section;
+        }
+        links.forEach(link => {
+          const active = current && link.getAttribute('href') === '#' + current.id;
+          link.classList.toggle('active', active);
+          if (active) link.setAttribute('aria-current', 'true');
+          else link.removeAttribute('aria-current');
+        });
+      }
+
+      addEventListener('scroll', update, { passive: true });
+      addEventListener('resize', update);
+      update();
+    }());
+  </script>
+</body>
+</html>
